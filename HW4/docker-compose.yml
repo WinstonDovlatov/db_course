@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  postgres:
+    build: ./docker/db
+    environment:
+      POSTGRES_DB: "ROMANTSOV_205"
+      POSTGRES_USER: "ROMANTSOV_205"
+      POSTGRES_PASSWORD: "ROMANTSOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts:/docker-entrypoint-initdb.d
+      - ./dz:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
